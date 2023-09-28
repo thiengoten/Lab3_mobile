@@ -33,8 +33,6 @@ public class Details extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(this);
 
         String[] allUser = db.getAllUser();
-
-        // TODO: display allUser in the recycler view
         adapter = new ContactAdapter(allUser);
         recyclerView.setAdapter(adapter);
 
