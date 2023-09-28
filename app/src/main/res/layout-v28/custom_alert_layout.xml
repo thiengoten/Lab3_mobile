@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contactCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="80sp"
+    android:layout_marginTop="200sp"
+    android:layout_marginEnd="60sp"
+    android:layout_marginBottom="200sp"
+    app:cardCornerRadius="8dp">
+
+    <!-- Customize this layout as per your requirements -->
+    <RelativeLayout
+        android:id="@+id/alerts"
+        android:layout_width="match_parent"
+        android:layout_height="122.5dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+
+        android:background="@drawable/alerts"
+        android:clipToOutline="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="270dp"
+            android:layout_height="78dp">
+
+            <TextView
+                android:id="@+id/Success"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="top"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/Test_Nek"
+                android:textAppearance="@style/Head_Color"
+                android:textFontWeight="700" />
+
+            <TextView
+                android:id="@+id/alert_descr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Success"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="7dp"
+                android:lineSpacingExtra="2sp"
+                android:text="@string/alert_descr"
+
+                android:textAppearance="@style/alert_descr"
+                app:layout_constraintTop_toBottomOf="@+id/Success" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:background="@color/gray_500"
+            android:clipToOutline="true" />
+
+        <RelativeLayout
+            android:id="@+id/bottom"
+            android:layout_width="270dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="10dp"
+                android:gravity="top"
+                android:lineSpacingExtra="1sp"
+                android:text="@string/action"
+                android:textAppearance="@style/action"
+                android:textFontWeight="400" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
