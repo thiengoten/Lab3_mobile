@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,17 +45,54 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveDetails();
-                // when button is clicked, clear the text fields
-                EditText name = findViewById(R.id.name_input);
-                EditText dob = findViewById(R.id.dob_input);
-                EditText email = findViewById(R.id.email_input);
-
-                name.setText("");
-                dob.setText("");
-                email.setText("");
+                if (validateFields()) {
+                    saveDetails();
+                    clearFields();
+                }
             }
         });
+    }
+
+    private void clearFields() {
+        EditText name = findViewById(R.id.name_input);
+        EditText dob = findViewById(R.id.dob_input);
+        EditText email = findViewById(R.id.email_input);
+
+        name.setText("");
+        dob.setText("");
+        email.setText("");
+    }
+
+    private boolean validateFields() {
+        EditText name = findViewById(R.id.name_input);
+        EditText dob = findViewById(R.id.dob_input);
+        EditText email = findViewById(R.id.email_input);
+
+        String nameString = name.getText().toString().trim();
+        String dobString = dob.getText().toString().trim();
+        String emailString = email.getText().toString().trim();
+
+        if (nameString.isEmpty()) {
+            name.setError("Name is required");
+            return false;
+        }
+
+        if (dobString.isEmpty()) {
+            dob.setError("Date of birth is required");
+            return false;
+        }
+
+        if (emailString.isEmpty()) {
+            email.setError("Email is required");
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailString).matches()) {
+            email.setError("Invalid email address");
+            return false;
+        }
+
+        return true;
     }
 
     private void saveDetails() {
@@ -92,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
         boolean checked = ((RadioButton) view).isChecked();
         // Check which radio button was clicked
        if(view.getId() == R.id.radio_Button){
-           imageUri = "ic_android_black_24dp";
+           imageUri = "image_1";
        } else if(view.getId() == R.id.radio_Button2){
-           imageUri = "baseline_catching_pokemon_24";
+           imageUri = "image_2";
        } else if(view.getId() == R.id.radio_Button3){
-           imageUri = "baseline_egg_24";
+           imageUri = "image_3";
        }
     }
 }
